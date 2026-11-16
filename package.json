@@ -1,0 +1,17 @@
+{
+  "name": "polskidaily",
+  "version": "0.1.0",
+  "description": "A daily Polish study app for speakers of non-Slavic languages, with a study plan, lessons, review cards and an AI tutor.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "license": "MIT",
+  "private": true
+}

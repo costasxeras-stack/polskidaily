@@ -1,0 +1,453 @@
+{
+  "hoursNote": "Hour targets are rough planning estimates for adults whose first language is not Slavic. They are not official figures.",
+  "levels": [
+    {
+      "id": "A1",
+      "name": "A1 Beginner",
+      "cumulativeHours": 80,
+      "canDo": "Introduce yourself, order food, ask prices, understand slow and simple speech.",
+      "topics": ["Sounds and spelling", "To be, to have", "Three genders", "Present tense", "Accusative for objects", "Numbers and prices", "Where things are (locative phrases)", "Question words"]
+    },
+    {
+      "id": "A2",
+      "name": "A2 Basic",
+      "cumulativeHours": 180,
+      "canDo": "Handle shops, doctors, offices and small talk. Talk about the past and your plans.",
+      "topics": ["Past tense", "Future tense", "Genitive (of, no, from, quantities)", "Instrumental (with, by, jobs)", "Verb aspect: first pairs", "Verbs of motion: iść and jechać", "Plural of nouns and adjectives", "Numbers with nouns"]
+    },
+    {
+      "id": "B1",
+      "name": "B1 Intermediate",
+      "cumulativeHours": 400,
+      "canDo": "Manage most daily situations in Polish. Follow the main points of TV and work conversations.",
+      "topics": ["All seven cases in singular and plural", "Verb aspect in every tense", "Conditional (bym, byś)", "Masculine personal plural", "Reflexive verbs", "Comparatives", "Linking words and longer sentences", "Formal Pan and Pani speech"]
+    },
+    {
+      "id": "B2",
+      "name": "B2 Upper intermediate",
+      "cumulativeHours": 800,
+      "canDo": "Work and argue a point in Polish. Read news and follow films without much effort.",
+      "topics": ["Participles", "Passive voice", "Impersonal forms (-no, -to)", "Verb prefixes and their meanings", "Collective and complex numerals", "Reported speech", "Register: formal, neutral, casual", "Exam formats of the state certificate"]
+    }
+  ],
+  "languages": [
+    { "code": "el", "name": "Greek" },
+    { "code": "it", "name": "Italian" },
+    { "code": "es", "name": "Spanish" },
+    { "code": "en", "name": "Another language (notes in English)" }
+  ],
+  "lessons": [
+    {
+      "id": "a1-01",
+      "level": "A1",
+      "title": "Sounds and letters",
+      "goal": "Read any Polish word aloud, even if you do not know it yet.",
+      "explain": [
+        "Polish spelling is regular. Once you know what each letter does, you can read every word. The stress falls on the second-to-last syllable: dzię-KU-ję, prze-PRA-szam.",
+        "Hard sounds: sz (like sh in shop), cz (like ch in chop), ż and rz (like s in measure). Soft sounds: ś, ć, ź are the same ideas said with the tongue flat and further forward, a bit like sh and ch said while smiling.",
+        "Other letters: ł sounds like English w. Polish w sounds like English v. c is always ts. j sounds like y in yes. ch and h are the same strong h. ą and ę are nasal, close to on and en."
+      ],
+      "examples": [
+        { "pl": "Cześć!", "en": "Hi!" },
+        { "pl": "Dzień dobry.", "en": "Good morning. / Good afternoon." },
+        { "pl": "Przepraszam.", "en": "Sorry. / Excuse me." }
+      ],
+      "bridge": {
+        "el": "Greek has no sh sound, so sz and ś will both sound like σ to you at first. Practise them as a pair: kasza (sz, tongue back) and Kasia (ś, tongue forward). Polish ch is your χ in χαρά. Polish c is your τσ.",
+        "it": "You already have close versions of the soft sounds. Polish ć is near the c in ciao, and ś is near the sc in sci. The hard ones (cz, sz) are the same sounds with the tongue pulled back. Polish c is your z in pizza.",
+        "es": "Spanish has no sh sound and no voiced z, so sz, ś, ż and z need the most practice. Polish ch is your j in jamón. Polish j is your y in yo. Polish cz is close to your ch in chico, said harder.",
+        "en": "The hard sounds are close to English: sz is sh, cz is ch. English has no soft ś and ć, so practise them as pairs with the hard ones: kasza and Kasia."
+      },
+      "vocab": [
+        { "pl": "cześć", "en": "hi, bye" },
+        { "pl": "dzień dobry", "en": "good morning, good afternoon" },
+        { "pl": "do widzenia", "en": "goodbye" },
+        { "pl": "dziękuję", "en": "thank you" },
+        { "pl": "proszę", "en": "please, here you are" },
+        { "pl": "przepraszam", "en": "sorry, excuse me" },
+        { "pl": "tak", "en": "yes" },
+        { "pl": "nie", "en": "no, not" }
+      ],
+      "drills": [
+        { "type": "choice", "q": "Which Polish letter sounds like English w?", "options": ["w", "ł", "l", "u"], "answer": "ł", "why": "ł is English w. Polish w is English v." },
+        { "type": "choice", "q": "Where is the stress in dziękuję?", "options": ["DZIĘ-ku-ję", "dzię-KU-ję", "dzię-ku-JĘ"], "answer": "dzię-KU-ję", "why": "Stress falls on the second-to-last syllable." },
+        { "type": "choice", "q": "The Polish letter c in the word co sounds like:", "options": ["k", "s", "ts", "ch"], "answer": "ts", "why": "c is always ts, never k." },
+        { "type": "type", "q": "Write in Polish: thank you", "answers": ["dziękuję"] },
+        { "type": "type", "q": "Write in Polish: yes", "answers": ["tak"] },
+        { "type": "choice", "q": "You bump into someone on the tram. What do you say?", "options": ["Dziękuję", "Przepraszam", "Do widzenia", "Tak"], "answer": "Przepraszam", "why": "Przepraszam means sorry or excuse me." }
+      ],
+      "tutorTopic": "Greet the learner and practise hello, thank you, please, sorry, yes and no in tiny exchanges."
+    },
+    {
+      "id": "a1-02",
+      "level": "A1",
+      "title": "I am: the verb być",
+      "goal": "Say who you are and where you are from.",
+      "explain": [
+        "The verb być (to be): jestem (I am), jesteś (you are), jest (he, she, it is), jesteśmy (we are), jesteście (you all are), są (they are).",
+        "Polish usually leaves out the word for I, you, we. The verb ending already tells who it is. Jestem Kostas is enough.",
+        "For now, learn where you are from as a fixed phrase: z Grecji (from Greece), z Włoch (from Italy), z Hiszpanii (from Spain), z Polski (from Poland). To say not, put nie before the verb."
+      ],
+      "examples": [
+        { "pl": "Jestem Kostas. Jestem z Grecji.", "en": "I am Kostas. I am from Greece." },
+        { "pl": "Ona jest z Polski.", "en": "She is from Poland." },
+        { "pl": "Nie jesteśmy z Krakowa.", "en": "We are not from Kraków." }
+      ],
+      "bridge": {
+        "el": "Same habit as Greek: you say Είμαι από την Ελλάδα without εγώ, and Polish says Jestem z Grecji without ja. One difference: Polish has no article, so there is nothing for την.",
+        "it": "Same habit as Italian: Sono di Roma has no io, and Jestem z Rzymu has no ja. Polish has no articles at all, so nothing like il or la appears.",
+        "es": "Polish has one verb where Spanish has two. Soy de Madrid is Jestem z Madrytu, and Estoy en casa is Jestem w domu. Like Spanish, Polish drops yo.",
+        "en": "Unlike English, Polish drops I, you and we because the verb ending shows the person. There is also no a or the."
+      },
+      "vocab": [
+        { "pl": "jestem", "en": "I am" },
+        { "pl": "jesteś", "en": "you are (one person)" },
+        { "pl": "jest", "en": "he, she, it is" },
+        { "pl": "jesteśmy", "en": "we are" },
+        { "pl": "są", "en": "they are" },
+        { "pl": "z Grecji", "en": "from Greece" },
+        { "pl": "z Polski", "en": "from Poland" },
+        { "pl": "on, ona", "en": "he, she" }
+      ],
+      "drills": [
+        { "type": "type", "q": "___ z Grecji. (I am)", "answers": ["jestem"] },
+        { "type": "type", "q": "Ona ___ z Polski. (is)", "answers": ["jest"] },
+        { "type": "choice", "q": "Oni ___ z Hiszpanii.", "options": ["jest", "jesteś", "są", "jestem"], "answer": "są", "why": "Oni (they) takes są." },
+        { "type": "type", "q": "___ w Krakowie. (we are)", "answers": ["jesteśmy"] },
+        { "type": "choice", "q": "How do you say: I am not from Poland?", "options": ["Jestem nie z Polski.", "Nie jestem z Polski.", "Nie ja z Polski."], "answer": "Nie jestem z Polski.", "why": "nie goes directly before the verb." },
+        { "type": "type", "q": "Ty ___ z Włoch? (are)", "answers": ["jesteś"] }
+      ],
+      "tutorTopic": "Ask the learner their name and where they are from, and have them ask you the same."
+    },
+    {
+      "id": "a1-03",
+      "level": "A1",
+      "title": "Three genders, no articles",
+      "goal": "Tell the gender of a noun from its ending.",
+      "explain": [
+        "Every Polish noun is masculine, feminine or neuter. The ending usually tells you. Masculine nouns end in a consonant: dom, kot, brat. Feminine nouns end in -a: kawa, woda, mama. Neuter nouns end in -o, -e or -ę: okno, mieszkanie, imię.",
+        "A few words for men end in -a but are masculine: tata (dad), kolega (male colleague), mężczyzna (man).",
+        "Polish has no a or the. To point at something use ten (masculine), ta (feminine), to (neuter): ten dom, ta kawa, to okno."
+      ],
+      "examples": [
+        { "pl": "To jest dom.", "en": "This is a house." },
+        { "pl": "Ta kawa jest dobra.", "en": "This coffee is good." },
+        { "pl": "To okno jest duże.", "en": "This window is big." }
+      ],
+      "bridge": {
+        "el": "Three genders, as in Greek. But the gender of a word often differs: το σπίτι is neuter, dom is masculine. Do not carry the Greek gender over. Since Polish has no ο, η, το, the noun ending is your only clue.",
+        "it": "Polish adds a third gender, neuter. Careful with -o: in Italian it marks masculine (il libro), in Polish it marks neuter (okno). Feminine -a works as you expect (la casa, kawa).",
+        "es": "Polish adds a third gender, neuter. Careful with -o: in Spanish it marks masculine (el libro), in Polish it marks neuter (okno). Feminine -a works as you expect (la casa, kawa).",
+        "en": "English nouns have no gender, so this is new. Learn each noun with ten, ta or to in front. The ending tells you which one in most cases."
+      },
+      "vocab": [
+        { "pl": "dom", "en": "house, home" },
+        { "pl": "kot", "en": "cat" },
+        { "pl": "kawa", "en": "coffee" },
+        { "pl": "woda", "en": "water" },
+        { "pl": "okno", "en": "window" },
+        { "pl": "mieszkanie", "en": "flat, apartment" },
+        { "pl": "dziecko", "en": "child" },
+        { "pl": "miasto", "en": "city" }
+      ],
+      "drills": [
+        { "type": "choice", "q": "kawa is:", "options": ["masculine", "feminine", "neuter"], "answer": "feminine", "why": "It ends in -a." },
+        { "type": "choice", "q": "okno is:", "options": ["masculine", "feminine", "neuter"], "answer": "neuter", "why": "It ends in -o." },
+        { "type": "choice", "q": "dom is:", "options": ["masculine", "feminine", "neuter"], "answer": "masculine", "why": "It ends in a consonant." },
+        { "type": "type", "q": "___ kot (this)", "answers": ["ten"] },
+        { "type": "type", "q": "___ miasto (this)", "answers": ["to"] },
+        { "type": "choice", "q": "tata (dad) is:", "options": ["masculine", "feminine", "neuter"], "answer": "masculine", "why": "Words for men are masculine even when they end in -a." }
+      ],
+      "tutorTopic": "Name simple objects at home and ask the learner what things are, using To jest and ten, ta, to."
+    },
+    {
+      "id": "a1-04",
+      "level": "A1",
+      "title": "Adjectives match the noun",
+      "goal": "Describe things with the right adjective ending.",
+      "explain": [
+        "An adjective takes the gender of its noun. Masculine -y, feminine -a, neuter -e: nowy dom, nowa kawa, nowe okno.",
+        "After k and g the masculine ending is -i and the neuter is -ie: polski, polska, polskie. Drogi, droga, drogie. The word tani (cheap) goes tani, tania, tanie.",
+        "The adjective normally stands before the noun: dobra kawa, duże miasto."
+      ],
+      "examples": [
+        { "pl": "To jest dobra kawa.", "en": "This is good coffee." },
+        { "pl": "Kraków to ładne miasto.", "en": "Kraków is a pretty city." },
+        { "pl": "Mam nowy dom.", "en": "I have a new house." }
+      ],
+      "bridge": {
+        "el": "This is καλός, καλή, καλό: dobry, dobra, dobre. The idea is the same, only the endings are new. The adjective goes before the noun, as in Greek.",
+        "it": "You know agreement from nuovo and nuova. Two changes: there is a neuter form (nowe), and the adjective goes before the noun. Casa nuova becomes nowy dom.",
+        "es": "You know agreement from nuevo and nueva. Two changes: there is a neuter form (nowe), and the adjective goes before the noun. Casa nueva becomes nowy dom.",
+        "en": "English adjectives never change. In Polish they copy the noun's gender. Word order is the same as English: new house, nowy dom."
+      },
+      "vocab": [
+        { "pl": "dobry", "en": "good" },
+        { "pl": "nowy", "en": "new" },
+        { "pl": "stary", "en": "old" },
+        { "pl": "duży", "en": "big" },
+        { "pl": "mały", "en": "small" },
+        { "pl": "drogi", "en": "expensive" },
+        { "pl": "tani", "en": "cheap" },
+        { "pl": "ładny", "en": "pretty, nice" }
+      ],
+      "drills": [
+        { "type": "type", "q": "___ kawa (good)", "answers": ["dobra"] },
+        { "type": "type", "q": "___ okno (big)", "answers": ["duże"] },
+        { "type": "type", "q": "___ dom (new)", "answers": ["nowy"] },
+        { "type": "type", "q": "___ mieszkanie (small)", "answers": ["małe"] },
+        { "type": "choice", "q": "___ woda (cheap)", "options": ["tani", "tania", "tanie"], "answer": "tania", "why": "woda is feminine, so tania." },
+        { "type": "choice", "q": "___ miasto (expensive)", "options": ["drogi", "droga", "drogie"], "answer": "drogie", "why": "miasto is neuter. After g the neuter ending is -ie." }
+      ],
+      "tutorTopic": "Ask the learner to describe their flat, their city and their coffee with simple adjectives."
+    },
+    {
+      "id": "a1-05",
+      "level": "A1",
+      "title": "Present tense: I have, I live",
+      "goal": "Use the most common verb pattern for all persons.",
+      "explain": [
+        "Many common verbs follow one pattern. Mieć (to have): mam, masz, ma, mamy, macie, mają. Mieszkać (to live): mieszkam, mieszkasz, mieszka, mieszkamy, mieszkacie, mieszkają.",
+        "Polish has one present tense. Czytam means both I read and I am reading.",
+        "To ask a yes or no question, you can put Czy at the start: Czy masz czas? (Do you have time?). To say not, put nie before the verb: Nie mam czasu."
+      ],
+      "examples": [
+        { "pl": "Mieszkam w Krakowie.", "en": "I live in Kraków." },
+        { "pl": "Czy masz kota?", "en": "Do you have a cat?" },
+        { "pl": "Oni czytają.", "en": "They are reading." }
+      ],
+      "bridge": {
+        "el": "As in Greek, the ending carries the person: μένω, μένεις, μένει and mieszkam, mieszkasz, mieszka. You already think this way, so only the endings need learning.",
+        "it": "As in Italian, the ending carries the person: abito, abiti, abita and mieszkam, mieszkasz, mieszka. There is no separate form like sto leggendo. Czytam covers both.",
+        "es": "As in Spanish, the ending carries the person: vivo, vives, vive and mieszkam, mieszkasz, mieszka. There is no separate form like estoy leyendo. Czytam covers both.",
+        "en": "English needs I, you, we because its verbs barely change. Polish verbs have six endings, and the pronoun is usually left out."
+      },
+      "vocab": [
+        { "pl": "mieć", "en": "to have" },
+        { "pl": "mieszkać", "en": "to live (somewhere)" },
+        { "pl": "czytać", "en": "to read" },
+        { "pl": "znać", "en": "to know (a person, a place)" },
+        { "pl": "słuchać", "en": "to listen" },
+        { "pl": "pamiętać", "en": "to remember" },
+        { "pl": "czas", "en": "time" },
+        { "pl": "czy", "en": "question word for yes or no questions" }
+      ],
+      "drills": [
+        { "type": "type", "q": "___ w Krakowie. (I live)", "answers": ["mieszkam"] },
+        { "type": "type", "q": "Czy ___ czas? (you have, one person)", "answers": ["masz"] },
+        { "type": "type", "q": "Oni ___. (read)", "answers": ["czytają"] },
+        { "type": "type", "q": "___ kota. (we have)", "answers": ["mamy"] },
+        { "type": "choice", "q": "Ona ___ Kraków. (knows)", "options": ["znam", "znasz", "zna", "znają"], "answer": "zna", "why": "The ending for he or she is the bare -a." },
+        { "type": "choice", "q": "Czytam means:", "options": ["only: I read", "only: I am reading", "both"], "answer": "both", "why": "Polish has one present tense." }
+      ],
+      "tutorTopic": "Ask the learner where they live, what they have at home and what they read or listen to."
+    },
+    {
+      "id": "a1-06",
+      "level": "A1",
+      "title": "The accusative: ordering and having",
+      "goal": "Change a noun when it is the object of the sentence.",
+      "explain": [
+        "When a noun is the thing you have, want, eat or drink, it goes into the accusative case. Feminine -a becomes -ę: kawa, but Poproszę kawę. The adjective takes -ą: dużą kawę.",
+        "Neuter nouns do not change: piwo, Poproszę piwo. Masculine things do not change either: Mam dom.",
+        "Masculine people and animals add -a: brat, Mam brata. Kot, Mam kota. Their adjective takes -ego: Mam dobrego brata."
+      ],
+      "examples": [
+        { "pl": "Poproszę dużą kawę.", "en": "A large coffee, please." },
+        { "pl": "Mam brata i siostrę.", "en": "I have a brother and a sister." },
+        { "pl": "Piję wodę.", "en": "I am drinking water." }
+      ],
+      "bridge": {
+        "el": "You do this in Greek every day: ο καφές, but θέλω έναν καφέ. Greek shows the case mostly on the article. Polish has no article, so the change sits on the noun ending: kawa, kawę.",
+        "it": "Italian nouns do not change, but pronouns do: io becomes me. Polish does that to every noun. Start with the phrase you will use most: Poproszę kawę.",
+        "es": "Spanish marks a person as the object with a: Veo a Juan. Polish marks people and animals with an ending instead: Mam brata. Things stay as they are in the masculine, a bit like Spanish things take no a.",
+        "en": "English shows this only in pronouns: he and him. Polish does it to nouns. Start with the phrase you will use most: Poproszę kawę."
+      },
+      "vocab": [
+        { "pl": "poproszę", "en": "I would like, please (when ordering)" },
+        { "pl": "herbata", "en": "tea" },
+        { "pl": "chleb", "en": "bread" },
+        { "pl": "piwo", "en": "beer" },
+        { "pl": "zupa", "en": "soup" },
+        { "pl": "brat", "en": "brother" },
+        { "pl": "siostra", "en": "sister" },
+        { "pl": "piję", "en": "I drink" }
+      ],
+      "drills": [
+        { "type": "type", "q": "Poproszę ___. (herbata)", "answers": ["herbatę"] },
+        { "type": "type", "q": "Mam ___. (brat)", "answers": ["brata"] },
+        { "type": "type", "q": "Piję ___. (woda)", "answers": ["wodę"] },
+        { "type": "type", "q": "Poproszę ___. (piwo)", "answers": ["piwo"] },
+        { "type": "type", "q": "Mam ___. (siostra)", "answers": ["siostrę"] },
+        { "type": "choice", "q": "Poproszę ___ kawę.", "options": ["duża", "dużą", "duże", "duży"], "answer": "dużą", "why": "With a feminine noun in the accusative, the adjective ends in -ą." }
+      ],
+      "tutorTopic": "Play a waiter in a Kraków cafe and let the learner order drinks and food with Poproszę."
+    },
+    {
+      "id": "a1-07",
+      "level": "A1",
+      "title": "I like, I speak",
+      "goal": "Use the second verb pattern and say which languages you speak.",
+      "explain": [
+        "The second big pattern has -ę for I and -isz or -ysz for you. Lubić (to like): lubię, lubisz, lubi, lubimy, lubicie, lubią. Mówić (to speak): mówię, mówisz, mówi, mówimy, mówicie, mówią. Robić (to do): robię, robisz, robi.",
+        "Languages use po plus a special form: po polsku, po angielsku, po grecku, po włosku, po hiszpańsku.",
+        "Useful sentence: Trochę mówię po polsku (I speak a little Polish). And as a fixed phrase: Uczę się polskiego (I am learning Polish)."
+      ],
+      "examples": [
+        { "pl": "Lubię kawę.", "en": "I like coffee." },
+        { "pl": "Czy mówisz po angielsku?", "en": "Do you speak English?" },
+        { "pl": "Trochę mówię po polsku.", "en": "I speak a little Polish." }
+      ],
+      "bridge": {
+        "el": "Μιλάω ελληνικά is Mówię po grecku. The po form is used only for languages, so learn po grecku and po polsku as whole pieces.",
+        "it": "Parlo italiano is Mówię po włosku. Note the word: Italy is Włochy and Italian is po włosku. The po form is used only for languages.",
+        "es": "Hablo español is Mówię po hiszpańsku. Me gusta el café turns around in Polish: Lubię kawę, with I as the subject, like English I like.",
+        "en": "Lubię kawę works like I like coffee. For languages, Polish says po polsku, roughly in the Polish way."
+      },
+      "vocab": [
+        { "pl": "lubić", "en": "to like" },
+        { "pl": "mówić", "en": "to speak, to say" },
+        { "pl": "robić", "en": "to do, to make" },
+        { "pl": "po polsku", "en": "in Polish" },
+        { "pl": "po angielsku", "en": "in English" },
+        { "pl": "trochę", "en": "a little" },
+        { "pl": "bardzo", "en": "very, very much" },
+        { "pl": "dobrze", "en": "well, OK" }
+      ],
+      "drills": [
+        { "type": "type", "q": "___ kawę. (I like)", "answers": ["lubię"] },
+        { "type": "type", "q": "Czy ___ po polsku? (you speak, one person)", "answers": ["mówisz"] },
+        { "type": "type", "q": "Co ___? (you do, one person)", "answers": ["robisz"] },
+        { "type": "choice", "q": "Oni ___ po angielsku.", "options": ["mówi", "mówię", "mówią", "mówimy"], "answer": "mówią", "why": "They takes -ą in this pattern." },
+        { "type": "choice", "q": "I speak a little Polish:", "options": ["Trochę mówię po polsku.", "Trochę mówię polski.", "Bardzo mówię po polsku."], "answer": "Trochę mówię po polsku.", "why": "Languages take po polsku. Trochę means a little." },
+        { "type": "type", "q": "Bardzo ___ Kraków. (we like)", "answers": ["lubimy"] }
+      ],
+      "tutorTopic": "Ask the learner which languages they speak, what they like to drink and eat, and what they do at the weekend."
+    },
+    {
+      "id": "a1-08",
+      "level": "A1",
+      "title": "Numbers and prices",
+      "goal": "Count to ten and understand a price.",
+      "explain": [
+        "1 jeden, 2 dwa, 3 trzy, 4 cztery, 5 pięć, 6 sześć, 7 siedem, 8 osiem, 9 dziewięć, 10 dziesięć.",
+        "To ask a price: Ile to kosztuje? (How much does it cost?)",
+        "The currency word changes with the number: 1 złoty, then 2, 3, 4 złote, then 5 and more złotych. So dwa złote, but pięć złotych."
+      ],
+      "examples": [
+        { "pl": "Ile to kosztuje?", "en": "How much does it cost?" },
+        { "pl": "Kawa kosztuje dziewięć złotych.", "en": "The coffee costs nine zlotys." },
+        { "pl": "Poproszę dwa piwa.", "en": "Two beers, please." }
+      ],
+      "bridge": {
+        "el": "Greek has one plural after every number: δύο ευρώ, πέντε ευρώ. Polish has two: one form after 2, 3, 4 and another from 5 up. Nothing in Greek matches this, so learn złote and złotych as two set forms.",
+        "it": "Italian has one plural after every number: due euro, cinque euro. Polish has two: one form after 2, 3, 4 and another from 5 up. Learn złote and złotych as two set forms.",
+        "es": "Spanish has one plural after every number: dos euros, cinco euros. Polish has two: one form after 2, 3, 4 and another from 5 up. Learn złote and złotych as two set forms.",
+        "en": "English has one plural after every number. Polish has two: one form after 2, 3, 4 and another from 5 up. Learn złote and złotych as two set forms."
+      },
+      "vocab": [
+        { "pl": "jeden", "en": "one" },
+        { "pl": "dwa", "en": "two" },
+        { "pl": "trzy", "en": "three" },
+        { "pl": "cztery", "en": "four" },
+        { "pl": "pięć", "en": "five" },
+        { "pl": "sześć", "en": "six" },
+        { "pl": "siedem", "en": "seven" },
+        { "pl": "osiem", "en": "eight" },
+        { "pl": "dziewięć", "en": "nine" },
+        { "pl": "dziesięć", "en": "ten" }
+      ],
+      "drills": [
+        { "type": "type", "q": "Write the number in Polish: 3", "answers": ["trzy"] },
+        { "type": "type", "q": "Write the number in Polish: 7", "answers": ["siedem"] },
+        { "type": "choice", "q": "pięć ___", "options": ["złoty", "złote", "złotych"], "answer": "złotych", "why": "From 5 up the form is złotych." },
+        { "type": "choice", "q": "dwa ___", "options": ["złoty", "złote", "złotych"], "answer": "złote", "why": "After 2, 3 and 4 the form is złote." },
+        { "type": "type", "q": "Ile to ___? (costs)", "answers": ["kosztuje"] },
+        { "type": "type", "q": "Write the number in Polish: 9", "answers": ["dziewięć"] }
+      ],
+      "tutorTopic": "Play a market seller. Tell prices from 1 to 10 zlotys and ask the learner how many items they want."
+    },
+    {
+      "id": "a1-09",
+      "level": "A1",
+      "title": "Where: w domu, w pracy",
+      "goal": "Say where you are and where you live.",
+      "explain": [
+        "After w (in, at) the noun changes its ending. This form is called the locative. The most common ending is -e or -ie, often with a change in the last consonant: Kraków, w Krakowie. Polska, w Polsce. Sklep, w sklepie.",
+        "Some words take -u or -y, -i: dom, w domu. Praca, w pracy. Restauracja, w restauracji.",
+        "At this stage, learn the places you use every day as ready phrases. The full rules come at A2. Question: Gdzie jesteś? (Where are you?)"
+      ],
+      "examples": [
+        { "pl": "Jestem w pracy.", "en": "I am at work." },
+        { "pl": "Mieszkam w Polsce, w Krakowie.", "en": "I live in Poland, in Kraków." },
+        { "pl": "Gdzie jesteś? W domu.", "en": "Where are you? At home." }
+      ],
+      "bridge": {
+        "el": "Greek uses σε with the accusative: στο σπίτι, στην Πολωνία. Polish has a separate case used only after words like w. So where Greek reuses a case you know, Polish asks for a new ending: w domu, w Polsce.",
+        "it": "Italian changes the little word: a casa, in Polonia, al lavoro. Polish keeps the same little word w and changes the noun instead: w domu, w Polsce, w pracy.",
+        "es": "Spanish keeps en and leaves the noun alone: en casa, en Polonia. Polish keeps w and changes the noun: w domu, w Polsce.",
+        "en": "English leaves the noun alone: at home, in Poland. Polish changes its ending after w: w domu, w Polsce."
+      },
+      "vocab": [
+        { "pl": "w domu", "en": "at home" },
+        { "pl": "w pracy", "en": "at work" },
+        { "pl": "w sklepie", "en": "in the shop" },
+        { "pl": "w restauracji", "en": "in the restaurant" },
+        { "pl": "w Polsce", "en": "in Poland" },
+        { "pl": "w Krakowie", "en": "in Kraków" },
+        { "pl": "gdzie", "en": "where" },
+        { "pl": "tutaj", "en": "here" }
+      ],
+      "drills": [
+        { "type": "type", "q": "Mieszkam w ___. (Polska)", "answers": ["polsce"] },
+        { "type": "type", "q": "Jestem w ___. (dom)", "answers": ["domu"] },
+        { "type": "type", "q": "Ona jest w ___. (praca)", "answers": ["pracy"] },
+        { "type": "type", "q": "Jesteśmy w ___. (Kraków)", "answers": ["krakowie"] },
+        { "type": "choice", "q": "___ jesteś? W sklepie.", "options": ["Co", "Gdzie", "Czy", "Ile"], "answer": "Gdzie", "why": "Gdzie means where." },
+        { "type": "choice", "q": "Oni są w ___.", "options": ["restauracja", "restauracji", "restaurację"], "answer": "restauracji", "why": "After w the form is restauracji." }
+      ],
+      "tutorTopic": "Ask the learner where they are now, where they live and where they work, and where family members are."
+    },
+    {
+      "id": "a1-10",
+      "level": "A1",
+      "title": "Questions and rescue phrases",
+      "goal": "Ask basic questions and keep a conversation going when you get lost.",
+      "explain": [
+        "Question words: co (what), kto (who), gdzie (where), kiedy (when), jak (how), dlaczego (why), ile (how much, how many).",
+        "Name: Jak masz na imię? Mam na imię Kostas. How are you: Jak się masz? Dobrze, dziękuję.",
+        "Rescue phrases: Nie rozumiem (I do not understand). Proszę mówić wolniej (Please speak more slowly). Jeszcze raz, proszę (Once more, please). Jak to jest po polsku? (How is that in Polish?)"
+      ],
+      "examples": [
+        { "pl": "Jak masz na imię?", "en": "What is your name?" },
+        { "pl": "Nie rozumiem. Jeszcze raz, proszę.", "en": "I do not understand. Once more, please." },
+        { "pl": "Kiedy masz czas?", "en": "When do you have time?" }
+      ],
+      "bridge": {
+        "el": "Greek makes a yes or no question with the voice alone: Μιλάς αγγλικά; Polish can do the same, or add Czy at the start: Czy mówisz po angielsku? Using Czy is the safe choice for a beginner because people hear at once that a question is coming.",
+        "it": "Italian makes a yes or no question with the voice alone: Parli inglese? Polish can do the same, or add Czy at the start: Czy mówisz po angielsku? Using Czy is the safe choice for a beginner.",
+        "es": "Spanish marks a question with the voice and with ¿ in writing. Polish can add Czy at the start: Czy mówisz po angielsku? Think of Czy as a spoken ¿.",
+        "en": "Czy does the job of English do in Do you speak English? It starts a yes or no question and has no meaning of its own."
+      },
+      "vocab": [
+        { "pl": "co", "en": "what" },
+        { "pl": "kto", "en": "who" },
+        { "pl": "kiedy", "en": "when" },
+        { "pl": "jak", "en": "how" },
+        { "pl": "dlaczego", "en": "why" },
+        { "pl": "ile", "en": "how much, how many" },
+        { "pl": "nie rozumiem", "en": "I do not understand" },
+        { "pl": "jeszcze raz", "en": "once more" }
+      ],
+      "drills": [
+        { "type": "type", "q": "___ masz na imię? (how)", "answers": ["jak"] },
+        { "type": "type", "q": "___ mieszkasz? (where)", "answers": ["gdzie"] },
+        { "type": "type", "q": "___ to jest? (what)", "answers": ["co"] },
+        { "type": "choice", "q": "___ mówisz po angielsku?", "options": ["Co", "Czy", "Kto", "Ile"], "answer": "Czy", "why": "Czy starts a yes or no question." },
+        { "type": "choice", "q": "You did not catch what someone said. You say:", "options": ["Jeszcze raz, proszę.", "Do widzenia.", "Poproszę kawę."], "answer": "Jeszcze raz, proszę.", "why": "It means once more, please." },
+        { "type": "type", "q": "Write in Polish: why", "answers": ["dlaczego"] }
+      ],
+      "tutorTopic": "Have a first full small-talk conversation: name, origin, where they live, languages. Speak a little too fast once so the learner can practise asking you to repeat or slow down."
+    }
+  ]
+}

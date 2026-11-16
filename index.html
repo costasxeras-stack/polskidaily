@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polski Daily</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23b3202a%27/%3E%3Ctext x=%2716%27 y=%2723%27 font-size=%2720%27 font-family=%27Arial%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27white%27%3EP%3C/text%3E%3C/svg%3E">
+<meta name="description" content="A daily Polish study app for speakers of non-Slavic languages.">
+<style>
+  :root {
+    --bg: #f8f5f0; --card: #ffffff; --ink: #1f1d1a; --muted: #6b655c; --line: #e4ddd2;
+    --accent: #b3202a; --accent-soft: #f7e6e7; --ok: #1e7a46; --ok-soft: #e3f3ea; --warn: #9a5b00; --warn-soft: #fbf0db;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; font-size: 16px; }
+  main { max-width: 720px; margin: 0 auto; padding: 16px 16px 96px; }
+  header.top { max-width: 720px; margin: 0 auto; padding: 16px 16px 0; display: flex; justify-content: space-between; align-items: baseline; }
+  header.top .brand { font-weight: 700; font-size: 18px; }
+  header.top .brand span { color: var(--accent); }
+  header.top .ver { color: var(--muted); font-size: 13px; }
+  h1 { font-size: 24px; margin: 8px 0 4px; }
+  h2 { font-size: 18px; margin: 0 0 8px; }
+  h3 { font-size: 15px; margin: 16px 0 6px; }
+  p { margin: 0 0 10px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin: 12px 0; }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .between { justify-content: space-between; }
+  button, .btn { font: inherit; border: 1px solid var(--line); background: #fff; color: var(--ink); padding: 10px 14px; border-radius: 10px; cursor: pointer; min-height: 44px; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  button.ghost { background: transparent; }
+  button:disabled { opacity: .5; cursor: default; }
+  button.linklike { border: 0; background: none; color: var(--accent); padding: 0; min-height: 0; text-decoration: underline; }
+  input, select, textarea { font: inherit; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); width: 100%; min-height: 44px; }
+  label { display: block; font-weight: 600; margin: 12px 0 4px; font-size: 14px; }
+  .bar { height: 10px; background: var(--line); border-radius: 6px; overflow: hidden; }
+  .bar > div { height: 100%; background: var(--accent); width: 0; }
+  .bar.ok > div { background: var(--ok); }
+  .step { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--line); }
+  .step:first-of-type { border-top: 0; }
+  .step .num { flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .step.done .num { background: var(--ok-soft); color: var(--ok); }
+  .step .body { flex: 1; min-width: 0; }
+  .step .body .t { font-weight: 600; }
+  .stat { flex: 1 1 100px; }
+  .stat .v { font-size: 22px; font-weight: 700; }
+  .stat .k { font-size: 13px; color: var(--muted); }
+  .pl { font-weight: 600; }
+  .bridge { background: var(--warn-soft); border-radius: 10px; padding: 12px; margin: 12px 0; }
+  .bridge .who { font-size: 13px; font-weight: 700; color: var(--warn); margin-bottom: 4px; }
+  table.vocab { width: 100%; border-collapse: collapse; }
+  table.vocab td { padding: 6px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  table.vocab td:first-child { font-weight: 600; width: 45%; padding-right: 8px; }
+  .options { display: grid; gap: 8px; margin: 10px 0; }
+  .options button { text-align: left; }
+  .options button.right { background: var(--ok-soft); border-color: var(--ok); }
+  .options button.wrong { background: var(--accent-soft); border-color: var(--accent); }
+  .fb { padding: 10px 12px; border-radius: 10px; margin: 10px 0; }
+  .fb.ok { background: var(--ok-soft); color: var(--ok); }
+  .fb.no { background: var(--accent-soft); color: var(--accent); }
+  .keys { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .keys button { min-height: 38px; padding: 6px 12px; }
+  .flash { text-align: center; padding: 28px 12px; }
+  .flash .pl { font-size: 28px; }
+  .flash .en { font-size: 18px; margin-top: 10px; min-height: 28px; }
+  .chat { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+  .msg { max-width: 88%; padding: 10px 12px; border-radius: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .msg.user { align-self: flex-end; background: var(--accent); color: #fff; }
+  .msg.assistant { align-self: flex-start; background: #fff; border: 1px solid var(--line); }
+  .notice { background: var(--warn-soft); color: var(--warn); padding: 10px 12px; border-radius: 10px; margin: 10px 0; }
+  nav.tabs { position: fixed; left: 0; right: 0; bottom: 0; background: #fff; border-top: 1px solid var(--line); display: flex; justify-content: center; z-index: 5; }
+  nav.tabs .inner { display: flex; width: 100%; max-width: 720px; }
+  nav.tabs button { flex: 1; border: 0; border-radius: 0; background: none; padding: 14px 4px; font-size: 14px; color: var(--muted); border-top: 3px solid transparent; }
+  nav.tabs button.on { color: var(--accent); font-weight: 700; border-top-color: var(--accent); }
+  details { border-top: 1px solid var(--line); padding: 10px 0; }
+  details summary { cursor: pointer; font-weight: 600; }
+  ul.plain { margin: 8px 0 0; padding-left: 18px; }
+  .lessonlist button { width: 100%; text-align: left; margin: 4px 0; display: flex; justify-content: space-between; gap: 8px; }
+  .tag { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); white-space: nowrap; align-self: center; }
+  .hidden { display: none !important; }
+  @media (min-width: 700px) { h1 { font-size: 28px; } .options { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">Polski <span>Daily</span></div>
+  <div class="ver" id="ver"></div>
+</header>
+<main id="app"><p class="muted">Loading...</p></main>
+<nav class="tabs hidden" id="tabs"><div class="inner">
+  <button data-tab="today">Today</button>
+  <button data-tab="tutor">Tutor</button>
+  <button data-tab="plan">Plan</button>
+  <button data-tab="settings">Settings</button>
+</div></nav>
+
+<script>
+(function () {
+  'use strict';
+
+  var KEY = 'polskidaily.v1';
+  var BOX_DAYS = [1, 2, 4, 8, 16];
+  var START_HOURS = { A0: 0, A1: 40, A2: 80, B1: 180 };
+  var START_LABELS = {
+    A0: 'A0. I know a few words at most',
+    A1: 'A1 in progress. I know greetings and some basics',
+    A2: 'A1 finished. I manage simple conversations',
+    B1: 'A2 finished. I manage most daily situations'
+  };
+  var POLISH_KEYS = ['ą', 'ć', 'ę', 'ł', 'ń', 'ó', 'ś', 'ź', 'ż'];
+
+  var app = document.getElementById('app');
+  var tabs = document.getElementById('tabs');
+  var C = null;            // curriculum
+  var STATUS = { version: '', tutorConfigured: false, codeRequired: false };
+  var S = load();          // saved state
+  var view = { tab: 'today', sub: null, lessonId: null, drill: 0, drillState: null, review: null, sending: false, tutorError: '' };
+  var memoryOnly = false;
+
+  // ---------- storage ----------
+  function blank() {
+    return { profile: null, log: {}, lessonsDone: {}, cards: {}, tutor: { explainIn: 'native', code: '', day: '', messages: [] } };
+  }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return blank();
+      var s = JSON.parse(raw);
+      var b = blank();
+      Object.keys(b).forEach(function (k) { if (s[k] === undefined || s[k] === null && k !== 'profile') s[k] = b[k]; });
+      return s;
+    } catch (e) { memoryOnly = true; return blank(); }
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { memoryOnly = true; }
+  }
+
+  // ---------- helpers ----------
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function dstr(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function today() { return dstr(new Date()); }
+  function addDays(dateStr, n) { var d = new Date(dateStr + 'T12:00:00'); d.setDate(d.getDate() + n); return dstr(d); }
+  function daysBetween(a, b) { return Math.round((new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / 86400000); }
+  function nice(dateStr) {
+    var d = new Date(dateStr + 'T12:00:00');
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
+  }
+  function norm(s) { return String(s).trim().toLowerCase().replace(/[.!?,]+$/g, '').replace(/\s+/g, ' '); }
+  function strip(s) {
+    return norm(s).replace(/ł/g, 'l').normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+  function langName(code) {
+    var l = C.languages.filter(function (x) { return x.code === code; })[0];
+    return l && code !== 'en' ? l.name : 'English';
+  }
+  function dayLog(d) { if (!S.log[d]) S.log[d] = { app: 0, life: 0 }; return S.log[d]; }
+  function minutesOn(d) { var l = S.log[d]; return l ? Math.round(l.app / 60 + l.life) : 0; }
+  function loggedHours() {
+    var t = 0;
+    Object.keys(S.log).forEach(function (d) { t += S.log[d].app / 3600 + S.log[d].life / 60; });
+    return t;
+  }
+  function totalHours() { return (S.profile ? S.profile.startHours : 0) + loggedHours(); }
+  function streak() {
+    var n = 0, d = today();
+    if (minutesOn(d) < 1) d = addDays(d, -1);
+    while (minutesOn(d) >= 1) { n += 1; d = addDays(d, -1); }
+    return n;
+  }
+  function paceMinutes() {
+    // Average minutes per day over the last 14 days, or since the start date if that is shorter.
+    var start = S.profile.startedOn, span = Math.min(14, daysBetween(start, today()) + 1), t = 0;
+    if (span < 1) span = 1;
+    for (var i = 0; i < span; i++) t += minutesOn(addDays(today(), -i));
+    return t / span;
+  }
+  function workingLevel() {
+    var h = totalHours();
+    for (var i = 0; i < C.levels.length; i++) if (h < C.levels[i].cumulativeHours) return C.levels[i];
+    return C.levels[C.levels.length - 1];
+  }
+  function tutorLevel() {
+    var w = workingLevel(), idx = C.levels.indexOf(w);
+    if (idx === 0) return totalHours() < 20 ? 'A0' : 'A1';
+    return C.levels[idx - 1].id;
+  }
+  function nextLesson() {
+    for (var i = 0; i < C.lessons.length; i++) if (!S.lessonsDone[C.lessons[i].id]) return C.lessons[i];
+    return null;
+  }
+  function lessonById(id) { return C.lessons.filter(function (l) { return l.id === id; })[0] || null; }
+  function lastDoneLesson() {
+    var best = null;
+    C.lessons.forEach(function (l) { if (S.lessonsDone[l.id]) best = l; });
+    return best;
+  }
+  function dueCards() {
+    var t = today(), out = [];
+    Object.keys(S.cards).forEach(function (id) { if (S.cards[id].due <= t) out.push(id); });
+    return out;
+  }
+  function cardData(id) {
+    var parts = id.split(':'), l = lessonById(parts[0]);
+    return l ? l.vocab[parseInt(parts[1], 10)] : null;
+  }
+
+  // ---------- study timer ----------
+  // Counts time only while a lesson, review or tutor screen is open, the page is visible,
+  // and there was a tap or key press in the last 90 seconds.
+  var lastActive = Date.now();
+  ['click', 'keydown', 'touchstart', 'input'].forEach(function (ev) {
+    document.addEventListener(ev, function () { lastActive = Date.now(); }, { passive: true });
+  });
+  var unsaved = 0;
+  setInterval(function () {
+    if (!S.profile) return;
+    var studying = view.sub === 'lesson' || view.sub === 'review' || view.tab === 'tutor';
+    if (!studying || document.visibilityState !== 'visible' || Date.now() - lastActive > 90000) return;
+    dayLog(today()).app += 1;
+    unsaved += 1;
+    if (unsaved >= 10) { unsaved = 0; save(); }
+  }, 1000);
+  window.addEventListener('pagehide', save);
+
+  // ---------- rendering ----------
+  function render() {
+    tabs.classList.toggle('hidden', !S.profile);
+    Array.prototype.forEach.call(tabs.querySelectorAll('button'), function (b) {
+      b.classList.toggle('on', b.getAttribute('data-tab') === view.tab);
+    });
+    if (!S.profile) return renderOnboarding();
+    if (view.sub === 'lesson') return renderLesson();
+    if (view.sub === 'review') return renderReview();
+    if (view.tab === 'today') return renderToday();
+    if (view.tab === 'tutor') return renderTutor();
+    if (view.tab === 'plan') return renderPlan();
+    return renderSettings();
+  }
+  function go(tab) { view.tab = tab; view.sub = null; save(); render(); window.scrollTo(0, 0); }
+  tabs.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (b) go(b.getAttribute('data-tab'));
+  });
+
+  function storageNotice() {
+    return memoryOnly ? '<div class="notice">This browser is blocking storage, so your progress will be lost when you close the page.</div>' : '';
+  }
+
+  function profileForm(p, submitLabel) {
+    var langs = C.languages.map(function (l) {
+      return '<option value="' + l.code + '"' + (p.lang === l.code ? ' selected' : '') + '>' + esc(l.name) + '</option>';
+    }).join('');
+    var starts = Object.keys(START_LABELS).map(function (k) {
+      return '<option value="' + k + '"' + (p.startLevel === k ? ' selected' : '') + '>' + esc(START_LABELS[k]) + '</option>';
+    }).join('');
+    var goals = C.levels.map(function (l) {
+      return '<option value="' + l.id + '"' + (p.goalLevel === l.id ? ' selected' : '') + '>' + esc(l.name) + '</option>';
+    }).join('');
+    return '' +
+      '<label for="f-lang">My first language</label><select id="f-lang">' + langs + '</select>' +
+      '<label for="f-start">My Polish today</label><select id="f-start">' + starts + '</select>' +
+      '<label for="f-goal">Level I want to reach</label><select id="f-goal">' + goals + '</select>' +
+      '<label for="f-date">By this date</label><input id="f-date" type="date" value="' + esc(p.goalDate) + '">' +
+      '<label for="f-min">Minutes I can study each day</label><input id="f-min" type="number" min="5" max="240" step="5" value="' + esc(p.dailyMinutes) + '">' +
+      '<div id="f-err"></div>' +
+      '<div class="row" style="margin-top:16px"><button class="primary" id="f-save">' + submitLabel + '</button></div>';
+  }
+  function readProfileForm() {
+    var goalDate = document.getElementById('f-date').value;
+    var mins = parseInt(document.getElementById('f-min').value, 10);
+    var err = '';
+    if (!goalDate || goalDate <= today()) err = 'Pick a goal date in the future.';
+    else if (!(mins >= 5 && mins <= 240)) err = 'Daily minutes must be between 5 and 240.';
+    if (err) { document.getElementById('f-err').innerHTML = '<div class="fb no">' + err + '</div>'; return null; }
+    return {
+      lang: document.getElementById('f-lang').value,
+      startLevel: document.getElementById('f-start').value,
+      goalLevel: document.getElementById('f-goal').value,
+      goalDate: goalDate,
+      dailyMinutes: mins
+    };
+  }
+
+  function renderOnboarding() {
+    var defaults = { lang: 'el', startLevel: 'A0', goalLevel: 'A2', goalDate: (new Date().getFullYear() + 1) + '-12-31', dailyMinutes: 25 };
+    app.innerHTML = '<h1>Learn Polish a little every day</h1>' +
+      '<p class="muted">Built for people whose first language is not Slavic. Lessons compare Polish with your own language, and the plan shows the date you will reach each level at your real pace.</p>' +
+      storageNotice() +
+      '<div class="card"><h2>Set up your plan</h2>' + profileForm(defaults, 'Start') +
+      '<p class="small muted" style="margin-top:12px">Your progress is saved in this browser only. There is no account.</p></div>';
+    document.getElementById('f-save').onclick = function () {
+      var p = readProfileForm(); if (!p) return;
+      p.startHours = START_HOURS[p.startLevel];
+      p.startedOn = today();
+      S.profile = p; save(); go('today');
+    };
+  }
+
+  function renderToday() {
+    var p = S.profile, mins = minutesOn(today()), pct = Math.min(100, Math.round(mins / p.dailyMinutes * 100));
+    var due = dueCards().length, next = nextLesson(), w = workingLevel();
+    var lessonDoneToday = Object.keys(S.lessonsDone).some(function (id) { return S.lessonsDone[id] === today(); });
+    var talked = S.tutor.day === today() && S.tutor.messages.length > 0;
+    var life = S.log[today()] ? S.log[today()].life : 0;
+
+    var lessonStep;
+    if (next) {
+      lessonStep = '<div class="t">Lesson: ' + esc(next.title) + '</div><div class="small muted">' + esc(next.goal) + '</div>' +
+        '<div class="row" style="margin-top:8px"><button class="primary" id="b-lesson">' + (lessonDoneToday ? 'Do the next lesson too' : 'Start lesson') + '</button></div>';
+    } else {
+      lessonStep = '<div class="t">No new lesson</div><div class="small muted">You have finished all ' + C.lessons.length +
+        ' lessons in this version. Keep going with review cards and the tutor. You can repeat any lesson from the Plan tab.</div>';
+    }
+
+    app.innerHTML = '<h1>Today</h1><p class="muted">' + nice(today()) + '</p>' + storageNotice() +
+      '<div class="card"><div class="row between"><div><strong>' + mins + '</strong> of ' + p.dailyMinutes + ' minutes</div><div class="small muted">' +
+      (streak() > 0 ? streak() + ' day streak' : 'No streak yet') + '</div></div>' +
+      '<div class="bar' + (pct >= 100 ? ' ok' : '') + '" style="margin-top:8px"><div style="width:' + pct + '%"></div></div>' +
+      '<p class="small muted" style="margin:8px 0 0">Working on ' + esc(w.name) + ' by hours studied. Total so far: ' + totalHours().toFixed(1) + ' hours.</p></div>' +
+      '<div class="card">' +
+        '<div class="step' + (due === 0 && Object.keys(S.cards).length ? ' done' : '') + '"><div class="num">1</div><div class="body">' +
+          '<div class="t">Review cards</div><div class="small muted">' +
+          (Object.keys(S.cards).length === 0 ? 'Cards appear here after your first lesson.' : (due ? due + ' due today' : 'Nothing due. Come back tomorrow.')) + '</div>' +
+          (due ? '<div class="row" style="margin-top:8px"><button id="b-review">Review ' + due + ' cards</button></div>' : '') +
+        '</div></div>' +
+        '<div class="step' + (lessonDoneToday ? ' done' : '') + '"><div class="num">2</div><div class="body">' + lessonStep + '</div></div>' +
+        '<div class="step' + (talked ? ' done' : '') + '"><div class="num">3</div><div class="body">' +
+          '<div class="t">Talk with the tutor</div><div class="small muted">A short written conversation on today\'s topic, with corrections.</div>' +
+          '<div class="row" style="margin-top:8px"><button id="b-tutor">Open tutor</button></div>' +
+        '</div></div>' +
+        '<div class="step' + (life > 0 ? ' done' : '') + '"><div class="num">4</div><div class="body">' +
+          '<div class="t">Polish outside the app</div><div class="small muted">Shop, colleagues, TV, a class. It counts toward your hours. Logged today: ' + life + ' min.</div>' +
+          '<div class="row" style="margin-top:8px"><button data-life="5">+5 min</button><button data-life="15">+15 min</button><button data-life="30">+30 min</button>' +
+          (life > 0 ? '<button class="ghost" data-life="-' + life + '">Clear</button>' : '') + '</div>' +
+        '</div></div>' +
+      '</div>';
+
+    var bl = document.getElementById('b-lesson');
+    if (bl) bl.onclick = function () { openLesson(next.id); };
+    var br = document.getElementById('b-review');
+    if (br) br.onclick = openReview;
+    document.getElementById('b-tutor').onclick = function () { go('tutor'); };
+    Array.prototype.forEach.call(app.querySelectorAll('[data-life]'), function (b) {
+      b.onclick = function () {
+        var l = dayLog(today());
+        l.life = Math.max(0, l.life + parseInt(b.getAttribute('data-life'), 10));
+        save(); renderToday();
+      };
+    });
+  }
+
+  // ---------- lesson ----------
+  function openLesson(id) {
+    view.sub = 'lesson'; view.lessonId = id; view.drill = -1; view.drillState = null; view.score = 0;
+    render(); window.scrollTo(0, 0);
+  }
+  function keysHtml() {
+    return '<div class="keys" aria-label="Polish letters">' + POLISH_KEYS.map(function (k) {
+      return '<button type="button" data-key="' + k + '">' + k + '</button>';
+    }).join('') + '</div>';
+  }
+  function wireKeys(input) {
+    Array.prototype.forEach.call(app.querySelectorAll('[data-key]'), function (b) {
+      b.onclick = function () {
+        var s = input.selectionStart, e = input.selectionEnd, v = input.value, k = b.getAttribute('data-key');
+        if (s === null || s === undefined) { s = e = v.length; }
+        input.value = v.slice(0, s) + k + v.slice(e);
+        input.focus(); input.setSelectionRange(s + 1, s + 1);
+      };
+    });
+  }
+  function renderLesson() {
+    var l = lessonById(view.lessonId), p = S.profile;
+    if (!l) { view.sub = null; return render(); }
+    var head = '<div class="row between"><button class="ghost" id="b-back">Back</button><div class="small muted">' + esc(l.level) + ' lesson ' +
+      (C.lessons.indexOf(l) + 1) + ' of ' + C.lessons.length + '</div></div>';
+
+    if (view.drill === -1) {
+      var bridge = l.bridge[p.lang] || l.bridge.en;
+      var who = p.lang === 'en' ? 'Compared with English' : 'For ' + langName(p.lang) + ' speakers';
+      app.innerHTML = head + '<h1>' + esc(l.title) + '</h1><p class="muted">' + esc(l.goal) + '</p>' +
+        '<div class="card">' + l.explain.map(function (x) { return '<p>' + esc(x) + '</p>'; }).join('') +
+        '<div class="bridge"><div class="who">' + esc(who) + '</div>' + esc(bridge) + '</div>' +
+        '<h3>Examples</h3>' + l.examples.map(function (x) { return '<p><span class="pl" lang="pl">' + esc(x.pl) + '</span><br><span class="muted">' + esc(x.en) + '</span></p>'; }).join('') +
+        '<h3>Words</h3><table class="vocab">' + l.vocab.map(function (v) { return '<tr><td lang="pl">' + esc(v.pl) + '</td><td>' + esc(v.en) + '</td></tr>'; }).join('') + '</table>' +
+        '</div><button class="primary" id="b-drills" style="width:100%">Practise (' + l.drills.length + ' questions)</button>';
+      document.getElementById('b-drills').onclick = function () { view.drill = 0; view.drillState = null; renderLesson(); window.scrollTo(0, 0); };
+    } else if (view.drill >= l.drills.length) {
+      var first = !S.lessonsDone[l.id];
+      if (first) {
+        S.lessonsDone[l.id] = today();
+        l.vocab.forEach(function (v, i) { S.cards[l.id + ':' + i] = { box: 0, due: addDays(today(), 1) }; });
+        save();
+      }
+      app.innerHTML = head + '<h1>Lesson done</h1>' +
+        '<div class="card"><p>You got <strong>' + view.score + ' of ' + l.drills.length + '</strong> right on the first try.</p>' +
+        '<p class="muted">' + (first ? l.vocab.length + ' words from this lesson were added to your review cards. The first review is tomorrow.' : 'This was a repeat, so your review cards stay as they are.') + '</p>' +
+        '<div class="row"><button class="primary" id="b-talk">Practise it with the tutor</button><button id="b-home">Back to Today</button></div></div>';
+      document.getElementById('b-talk').onclick = function () { go('tutor'); };
+      document.getElementById('b-home').onclick = function () { go('today'); };
+    } else {
+      renderDrill(l, head);
+    }
+    document.getElementById('b-back').onclick = function () { go(view.tab === 'plan' ? 'plan' : 'today'); };
+  }
+  function renderDrill(l, head) {
+    var d = l.drills[view.drill], st = view.drillState;
+    var html = head + '<p class="small muted" style="margin-top:12px">Question ' + (view.drill + 1) + ' of ' + l.drills.length + '</p>' +
+      '<div class="card"><h2 lang="pl">' + esc(d.q) + '</h2>';
+    if (d.type === 'choice') {
+      html += '<div class="options">' + d.options.map(function (o, i) {
+        var cls = '';
+        if (st) { if (o === d.answer) cls = 'right'; else if (i === st.picked) cls = 'wrong'; }
+        return '<button data-opt="' + i + '" class="' + cls + '"' + (st ? ' disabled' : '') + ' lang="pl">' + esc(o) + '</button>';
+      }).join('') + '</div>';
+    } else {
+      html += '<input id="d-in" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" lang="pl" placeholder="Type the Polish word"' +
+        (st ? ' disabled value="' + esc(st.typed) + '"' : '') + '>' + (st ? '' : keysHtml() + '<button class="primary" id="d-check">Check</button>');
+    }
+    if (st) {
+      html += '<div class="fb ' + (st.ok ? 'ok' : 'no') + '">' + (st.ok ? 'Correct.' : 'Not quite. The answer is <strong lang="pl">' + esc(st.answer) + '</strong>.') +
+        (st.note ? ' ' + esc(st.note) : '') + '</div><button class="primary" id="d-next">' + (view.drill + 1 >= l.drills.length ? 'Finish lesson' : 'Next') + '</button>';
+    }
+    app.innerHTML = html + '</div>';
+
+    if (!st && d.type === 'choice') {
+      Array.prototype.forEach.call(app.querySelectorAll('[data-opt]'), function (b) {
+        b.onclick = function () {
+          var i = parseInt(b.getAttribute('data-opt'), 10), ok = d.options[i] === d.answer;
+          if (ok) view.score += 1;
+          view.drillState = { ok: ok, picked: i, answer: d.answer, note: d.why || '' };
+          renderLesson();
+        };
+      });
+    }
+    if (!st && d.type === 'type') {
+      var input = document.getElementById('d-in');
+      wireKeys(input);
+      var check = function () {
+        var typed = input.value; if (!typed.trim()) return;
+        var ok = d.answers.some(function (a) { return norm(a) === norm(typed); });
+        var near = !ok && d.answers.some(function (a) { return strip(a) === strip(typed); });
+        if (ok) view.score += 1;
+        view.drillState = { ok: ok, typed: typed, answer: d.answers[0], note: near ? 'The letters were right, but check the Polish marks (ą, ę, ł, ś and so on). They change the sound and the meaning.' : '' };
+        renderLesson();
+      };
+      document.getElementById('d-check').onclick = check;
+      input.onkeydown = function (e) { if (e.key === 'Enter') { e.preventDefault(); check(); } };
+      input.focus();
+    }
+    var nx = document.getElementById('d-next');
+    if (nx) { nx.onclick = function () { view.drill += 1; view.drillState = null; renderLesson(); window.scrollTo(0, 0); }; nx.focus(); }
+  }
+
+  // ---------- review ----------
+  function openReview() {
+    view.sub = 'review'; view.review = { queue: dueCards(), i: 0, shown: false, knew: 0 };
+    render(); window.scrollTo(0, 0);
+  }
+  function renderReview() {
+    var r = view.review;
+    var head = '<div class="row between"><button class="ghost" id="b-back">Back</button><div class="small muted">Review</div></div>';
+    if (!r || r.i >= r.queue.length) {
+      app.innerHTML = head + '<h1>Review done</h1><div class="card"><p>You knew <strong>' + (r ? r.knew : 0) + ' of ' + (r ? r.queue.length : 0) +
+        '</strong> cards.</p><p class="muted">Cards you knew come back later each time. Cards you missed come back tomorrow.</p>' +
+        '<button class="primary" id="b-home">Back to Today</button></div>';
+      document.getElementById('b-home').onclick = function () { go('today'); };
+    } else {
+      var id = r.queue[r.i], c = cardData(id);
+      if (!c) { delete S.cards[id]; r.i += 1; return renderReview(); }
+      app.innerHTML = head + '<p class="small muted" style="margin-top:12px">Card ' + (r.i + 1) + ' of ' + r.queue.length + '</p>' +
+        '<div class="card flash"><div class="pl" lang="pl">' + esc(c.pl) + '</div><div class="en muted">' + (r.shown ? esc(c.en) : '') + '</div></div>' +
+        (r.shown
+          ? '<div class="row"><button id="b-no" style="flex:1">I did not know it</button><button class="primary" id="b-yes" style="flex:1">I knew it</button></div>'
+          : '<button class="primary" id="b-show" style="width:100%">Show meaning</button>');
+      if (!r.shown) document.getElementById('b-show').onclick = function () { r.shown = true; renderReview(); };
+      else {
+        var mark = function (knew) {
+          var card = S.cards[id];
+          card.box = knew ? Math.min(card.box + 1, BOX_DAYS.length - 1) : 0;
+          card.due = addDays(today(), BOX_DAYS[card.box]);
+          if (knew) r.knew += 1;
+          r.i += 1; r.shown = false; save(); renderReview();
+        };
+        document.getElementById('b-yes').onclick = function () { mark(true); };
+        document.getElementById('b-no').onclick = function () { mark(false); };
+      }
+    }
+    document.getElementById('b-back').onclick = function () { go('today'); };
+  }
+
+  // ---------- tutor ----------
+  function tutorLesson() { return lastDoneLesson() || C.lessons[0]; }
+  function renderTutor() {
+    var p = S.profile, t = S.tutor;
+    if (t.day !== today()) { t.day = today(); t.messages = []; }
+    var l = tutorLesson();
+    var html = '<h1>Tutor</h1><p class="muted">Write in Polish as well as you can. The tutor answers at your level and corrects your most important mistake.</p>';
+
+    if (!STATUS.tutorConfigured) {
+      app.innerHTML = html + '<div class="notice">The tutor is not set up on this server yet. Lessons, review cards and the plan work without it.</div>';
+      return;
+    }
+    if (STATUS.codeRequired && !t.code) {
+      app.innerHTML = html + '<div class="card"><h2>Access code</h2><p class="muted small">Each tutor message costs the owner of this demo a little money, so the tutor needs a code. Everything else in the app is open.</p>' +
+        (view.tutorError ? '<div class="fb no">' + esc(view.tutorError) + '</div>' : '') +
+        '<label for="t-code">Code</label><input id="t-code" type="text" autocomplete="off" autocapitalize="off">' +
+        '<div class="row" style="margin-top:12px"><button class="primary" id="t-code-save">Continue</button></div></div>';
+      document.getElementById('t-code-save').onclick = function () {
+        var v = document.getElementById('t-code').value.trim();
+        if (v) { t.code = v; view.tutorError = ''; save(); renderTutor(); }
+      };
+      return;
+    }
+
+    html += '<div class="card"><div class="small muted">Topic: ' + esc(l.title) + '</div>' +
+      '<label for="t-explain">Explain my mistakes in</label><select id="t-explain">' +
+      (p.lang !== 'en' ? '<option value="native"' + (t.explainIn !== 'en' ? ' selected' : '') + '>' + esc(langName(p.lang)) + '</option>' : '') +
+      '<option value="en"' + (t.explainIn === 'en' || p.lang === 'en' ? ' selected' : '') + '>English</option></select></div>';
+    html += '<div class="chat" id="chat">' + t.messages.map(function (m) {
+      return '<div class="msg ' + m.role + '"' + (m.role === 'assistant' ? ' lang="pl"' : '') + '>' + esc(m.content) + '</div>';
+    }).join('') + (view.sending ? '<div class="msg assistant muted">...</div>' : '') + '</div>';
+    if (view.tutorError) html += '<div class="fb no">' + esc(view.tutorError) + '</div>';
+    html += '<div class="card"><textarea id="t-in" rows="2" lang="pl" placeholder="Napisz po polsku..." maxlength="600"' + (view.sending ? ' disabled' : '') + '></textarea>' + keysHtml() +
+      '<div class="row"><button class="primary" id="t-send"' + (view.sending ? ' disabled' : '') + '>Send</button>' +
+      (t.messages.length === 0 ? '<button id="t-start"' + (view.sending ? ' disabled' : '') + '>Start for me</button>' : '<button class="ghost" id="t-clear">New conversation</button>') +
+      (STATUS.codeRequired ? '<button class="linklike small" id="t-recode">Change code</button>' : '') + '</div></div>';
+    app.innerHTML = html;
+
+    var input = document.getElementById('t-in');
+    wireKeys(input);
+    document.getElementById('t-explain').onchange = function (e) { t.explainIn = e.target.value; save(); };
+    document.getElementById('t-send').onclick = function () { sendTutor(input.value); };
+    var st = document.getElementById('t-start'); if (st) st.onclick = function () { sendTutor('Cześć!'); };
+    var cl = document.getElementById('t-clear'); if (cl) cl.onclick = function () { t.messages = []; view.tutorError = ''; save(); renderTutor(); };
+    var rc = document.getElementById('t-recode'); if (rc) rc.onclick = function () { t.code = ''; save(); renderTutor(); };
+    var chat = document.getElementById('chat');
+    if (chat.lastElementChild) chat.lastElementChild.scrollIntoView({ block: 'nearest' });
+  }
+  function sendTutor(text) {
+    var t = S.tutor, p = S.profile;
+    text = String(text || '').trim();
+    if (!text || view.sending) return;
+    t.messages.push({ role: 'user', content: text });
+    view.sending = true; view.tutorError = ''; save(); renderTutor();
+    fetch('/api/tutor', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-access-code': t.code || '' },
+      body: JSON.stringify({ lang: p.lang, level: tutorLevel(), explainIn: p.lang === 'en' ? 'en' : t.explainIn, lessonId: tutorLesson().id, messages: t.messages })
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
+      .then(function (res) {
+        view.sending = false;
+        if (res.ok) {
+          t.messages.push({ role: 'assistant', content: res.j.reply });
+          if (t.messages.length > 40) t.messages = t.messages.slice(-40);
+        } else {
+          t.messages.pop();
+          view.tutorError = res.j.message || 'The tutor could not answer.';
+          if (res.status === 401) t.code = '';
+        }
+        save(); if (view.tab === 'tutor' && !view.sub) renderTutor();
+      })
+      .catch(function () {
+        view.sending = false; t.messages.pop();
+        view.tutorError = 'No connection to the tutor. Check your internet and try again.';
+        save(); if (view.tab === 'tutor' && !view.sub) renderTutor();
+      });
+  }
+
+  // ---------- plan ----------
+  function renderPlan() {
+    var p = S.profile, h = totalHours(), pace = paceMinutes();
+    var goal = C.levels.filter(function (l) { return l.id === p.goalLevel; })[0];
+    var daysLeft = Math.max(0, daysBetween(today(), p.goalDate));
+    var remaining = Math.max(0, goal.cumulativeHours - h);
+    var goalHtml;
+    if (remaining === 0) {
+      goalHtml = '<div class="fb ok">By hours studied you have reached ' + esc(goal.name) + '. Set a new goal in Settings.</div>';
+    } else if (daysLeft === 0) {
+      goalHtml = '<div class="fb no">Your goal date has passed. Pick a new date in Settings.</div>';
+    } else {
+      var need = Math.ceil(remaining * 60 / daysLeft);
+      var onTrack = p.dailyMinutes >= need;
+      goalHtml = '<p>To reach <strong>' + esc(goal.name) + '</strong> by <strong>' + nice(p.goalDate) + '</strong> you need about <strong>' + need +
+        ' minutes a day</strong> from today. That is ' + remaining.toFixed(0) + ' more hours in ' + daysLeft + ' days.</p>' +
+        '<div class="fb ' + (onTrack ? 'ok' : 'no') + '">' + (onTrack
+          ? 'Your plan of ' + p.dailyMinutes + ' minutes a day is enough, if you keep to it.'
+          : 'Your plan is ' + p.dailyMinutes + ' minutes a day, which is ' + (need - p.dailyMinutes) + ' short. Add time, count more Polish outside the app, or move the date.') + '</div>';
+    }
+
+    var levels = C.levels.map(function (l, i) {
+      var prev = i ? C.levels[i - 1].cumulativeHours : 0;
+      var pct = Math.max(0, Math.min(100, (h - prev) / (l.cumulativeHours - prev) * 100));
+      var left = l.cumulativeHours - h, when;
+      if (left <= 0) when = 'Reached by hours';
+      else {
+        var atPlan = nice(addDays(today(), Math.ceil(left * 60 / p.dailyMinutes)));
+        when = (pace >= 1 ? 'At your real pace: ' + nice(addDays(today(), Math.ceil(left * 60 / pace))) : 'At your real pace: no date yet, study a few days first') +
+          '<br>At your planned ' + p.dailyMinutes + ' min a day: ' + atPlan;
+      }
+      return '<div style="margin:14px 0"><div class="row between"><strong>' + esc(l.name) + '</strong><span class="small muted">' +
+        Math.min(h, l.cumulativeHours).toFixed(0) + ' of ' + l.cumulativeHours + ' h</span></div>' +
+        '<div class="bar' + (left <= 0 ? ' ok' : '') + '" style="margin:6px 0"><div style="width:' + pct.toFixed(0) + '%"></div></div>' +
+        '<div class="small muted">' + when + '</div></div>';
+    }).join('');
+
+    var roadmap = C.levels.map(function (l) {
+      return '<details><summary>' + esc(l.name) + '</summary><p class="small muted" style="margin-top:8px">' + esc(l.canDo) + '</p><ul class="plain small">' +
+        l.topics.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></details>';
+    }).join('');
+
+    var lessons = C.lessons.map(function (l, i) {
+      return '<button data-lesson="' + l.id + '"><span>' + (i + 1) + '. ' + esc(l.title) + '</span>' + (S.lessonsDone[l.id] ? '<span class="tag">Done</span>' : '') + '</button>';
+    }).join('');
+
+    app.innerHTML = '<h1>Plan</h1>' +
+      '<div class="card"><div class="row"><div class="stat"><div class="v">' + h.toFixed(1) + '</div><div class="k">hours in total</div></div>' +
+      '<div class="stat"><div class="v">' + Math.round(pace) + '</div><div class="k">min a day, last 14 days</div></div>' +
+      '<div class="stat"><div class="v">' + streak() + '</div><div class="k">day streak</div></div></div></div>' +
+      '<div class="card"><h2>Your goal</h2>' + goalHtml + '</div>' +
+      '<div class="card"><h2>Levels</h2>' + levels + '<p class="small muted">' + esc(C.hoursNote) + ' Levels here are counted by hours studied. They are not a test result.</p></div>' +
+      '<div class="card"><h2>What each level covers</h2>' + roadmap + '</div>' +
+      '<div class="card lessonlist"><h2>Lessons in this version</h2>' + lessons + '</div>';
+    Array.prototype.forEach.call(app.querySelectorAll('[data-lesson]'), function (b) {
+      b.onclick = function () { openLesson(b.getAttribute('data-lesson')); };
+    });
+  }
+
+  // ---------- settings ----------
+  function renderSettings() {
+    app.innerHTML = '<h1>Settings</h1><div class="card"><h2>Plan</h2>' + profileForm(S.profile, 'Save') + '<div id="s-msg"></div></div>' +
+      '<div class="card"><h2>Backup</h2><p class="small muted">Progress lives in this browser only. Download a backup before you clear browser data or change phone, then load it on the new device.</p>' +
+      '<div class="row"><button id="s-export">Download backup</button><button id="s-import-btn">Load backup</button><input id="s-import" type="file" accept="application/json,.json" class="hidden"></div><div id="s-bmsg"></div></div>' +
+      '<div class="card"><h2>Start over</h2><p class="small muted">Deletes all progress in this browser.</p><div class="row" id="s-reset-row"><button id="s-reset">Delete my progress</button></div></div>';
+    document.getElementById('f-save').onclick = function () {
+      var p = readProfileForm(); if (!p) return;
+      var old = S.profile;
+      p.startedOn = old.startedOn;
+      p.startHours = p.startLevel === old.startLevel ? old.startHours : START_HOURS[p.startLevel];
+      S.profile = p; save();
+      document.getElementById('s-msg').innerHTML = '<div class="fb ok">Saved.</div>';
+    };
+    document.getElementById('s-export').onclick = function () {
+      save();
+      var blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'polskidaily-backup-' + today() + '.json';
+      document.body.appendChild(a); a.click(); a.remove();
+    };
+    document.getElementById('s-import-btn').onclick = function () { document.getElementById('s-import').click(); };
+    document.getElementById('s-import').onchange = function (e) {
+      var f = e.target.files[0]; if (!f) return;
+      var reader = new FileReader();
+      reader.onload = function () {
+        var msg = document.getElementById('s-bmsg');
+        try {
+          var s = JSON.parse(reader.result);
+          if (!s || !s.profile || !s.log || !s.cards) throw new Error('shape');
+          var b = blank();
+          Object.keys(b).forEach(function (k) { if (s[k] === undefined) s[k] = b[k]; });
+          S = s; save();
+          msg.innerHTML = '<div class="fb ok">Backup loaded.</div>';
+        } catch (err) {
+          msg.innerHTML = '<div class="fb no">That file is not a Polski Daily backup.</div>';
+        }
+      };
+      reader.readAsText(f);
+    };
+    document.getElementById('s-reset').onclick = function () {
+      document.getElementById('s-reset-row').innerHTML = '<button class="primary" id="s-reset-yes">Yes, delete everything</button><button id="s-reset-no">Cancel</button>';
+      document.getElementById('s-reset-yes').onclick = function () { S = blank(); save(); view.tab = 'today'; render(); };
+      document.getElementById('s-reset-no').onclick = renderSettings;
+    };
+  }
+
+  // ---------- start ----------
+  Promise.all([
+    fetch('/api/curriculum').then(function (r) { return r.json(); }),
+    fetch('/api/status').then(function (r) { return r.json(); }).catch(function () { return STATUS; })
+  ]).then(function (res) {
+    C = res[0]; STATUS = res[1];
+    document.getElementById('ver').textContent = STATUS.version ? 'v' + STATUS.version : '';
+    render();
+  }).catch(function () {
+    app.innerHTML = '<div class="notice">The app could not load its lessons. If this is the free demo, the server may be waking up. Wait 30 seconds and reload.</div>';
+  });
+})();
+</script>
+</body>
+</html>
